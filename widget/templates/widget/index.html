@@ -20,7 +20,7 @@
                 <option value="test">https://scotch.com/tyc</option>
                 <option value="it">https://scotch.com/faq</option>
             </select>
-            <p id="componentes"></p>
+            <p style="word-break: break-all;" id="componentes"></p>
         </div>
 
         <script>
@@ -69,14 +69,13 @@
                 //let cmp = [{"component_id":"TC20070000011110","component_name":"linetext7_CUS","component_label":"Tons per Hour","component_type":"text","is_required":true,"action_text":null}]
                 components.forEach(cmp => {
                     $('#app-widget-label').text(cmp.component_label);
-                   // $('#app-widget-input').attr('name', cmp.component_name);
-                    //$('#app-widget-input').val(cmp.action_text);
+                    $('#app-widget-input').attr('name', cmp.component_id);
                     $('#componentes').html(JSON.stringify(cmp));
                 })
             }
 
             /**
-             * function to get the values of the components this widget is 
+             * function to get the values of the components this widget is
              * servicing. This function was designed to provide values
              * for the SDK, therefore, it's returning them as an array
              * of objects with a "name", and "value" attribute.
@@ -88,7 +87,7 @@
              */
             function getValue() {
 
-                // in this case, this widget is designed to only support 
+                // in this case, this widget is designed to only support
                 // one component at a time, therefore this function will
                 // return an array containint just one object
                 return [
@@ -97,42 +96,6 @@
                         value:  $('#app-widget-input').val()
                     }
                 ];
-            }
-
-            /**
-             * function to prepare a "hello world" modal window displaying
-             * the name of the underlying component this widget is servicing
-             *
-             * @param {String} componentName
-             *    The component name we wish to use in our modal
-             *
-             * @return {Object}
-             *    An object specially built to be used with the SDK's modal 
-             *    function
-             */
-            function prepareModal(componentName) {
-
-                // define title
-                let titleContent = 'HELLO WORLD MODAL!'
-
-                // define html content
-                let htmlContent =
-                    '<div>I am servicing this component: <b>' + componentName + '</b></div>' +
-
-                    // basic cross script attack attempt
-                    "<div> <script> Alert('xss!'); </sc" +
-                    "ript> </div>";
-
-                // randomly choose small, medium, or large
-                var randomIndex = Math.floor(Math.random() * 3); // returns a random integer from 0 to 2
-                let sizes = ['small', 'medium', 'large'];
-
-                // return object
-                return {
-                    html:   htmlContent,
-                    size:   sizes[randomIndex],
-                    title:  titleContent
-                };
             }
 
             console.log("Let's initialize the canvas");
