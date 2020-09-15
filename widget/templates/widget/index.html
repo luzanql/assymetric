@@ -70,6 +70,7 @@
                 components.forEach(cmp => {
                     $('#app-widget-label').text(cmp.component_label);
                     $('#app-widget-input').attr('name', cmp.component_id);
+                    $('#app-widget-input').val('name', cmp.action_text);
                     $('#componentes').html(JSON.stringify(cmp));
                 })
             }
@@ -92,9 +93,9 @@
                 // return an array containint just one object
                 return [
                     {
-                        name:   $('#app-widget-input').attr('name'),
+                        id:   $('#app-widget-input').attr('name'),
                         value:  $('#app-widget-input').val()
-                    }
+                    },
                 ];
             }
 
