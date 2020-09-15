@@ -70,7 +70,7 @@
                 components.forEach(cmp => {
                     $('#app-widget-label').text(cmp.component_label);
                     $('#app-widget-input').attr('name', cmp.component_id);
-                    $('#app-widget-input').val('name', cmp.action_text);
+                    $('#app-widget-input').val(cmp.action_text);
                     $('#componentes').html(JSON.stringify(cmp));
                 })
             }
