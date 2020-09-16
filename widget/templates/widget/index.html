@@ -15,10 +15,10 @@
         <div>
             <label id="app-widget-label">Url Manager</label><br>
             <select id="app-widget-input" class="m-select">
-                <option>Select a url</option>
-                <option value="fr">https://scotch.com/site</option>
-                <option value="test">https://scotch.com/tyc</option>
-                <option value="it">https://scotch.com/faq</option>
+                <option value="">Select a url</option>
+                <option value="site">https://scotch.com/site</option>
+                <option value="tyc">https://scotch.com/tyc</option>
+                <option value="faq">https://scotch.com/faq</option>
             </select>
             <p style="word-break: break-all;" id="componentes"></p>
         </div>
@@ -68,9 +68,9 @@
                 //let iterator = components.values();
                 //let cmp = [{"component_id":"TC20070000011110","component_name":"linetext7_CUS","component_label":"Tons per Hour","component_type":"text","is_required":true,"action_text":null}]
                 components.forEach(cmp => {
-                    $('#app-widget-label').text(cmp.component_label);
-                    $('#app-widget-input').attr('name', cmp.component_id);
-                    $('#app-widget-input').val(cmp.action_text);
+                    $('#app-widget-label').text(cmp.label);
+                    $('#app-widget-input').attr('name', cmp.id);
+                    $('#app-widget-input').val(cmp.value);
                     $('#componentes').html(JSON.stringify(cmp));
                 })
             }
