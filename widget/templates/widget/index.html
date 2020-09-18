@@ -70,11 +70,21 @@
                 // (in this case, we're just expecting one component)
                 //let iterator = components.values();
                 //let cmp = [{"component_id":"TC20070000011110","component_name":"linetext7_CUS","component_label":"Tons per Hour","component_type":"text","is_required":true,"action_text":null}]
+                let cont = 0;
                 components.forEach(cmp => {
-                    $('#app-widget-label').text(cmp.label);
-                    $('#app-widget-input').attr('name', cmp.id);
-                    $('#app-widget-input').val(cmp.value);
-                    $('#componentes').append("<br>"+JSON.stringify(cmp));
+                    if (cont == 0) {
+                        $('#app-widget-label').text(cmp.label);
+                        $('#app-widget-input').attr('name', cmp.id);
+                        $('#app-widget-input').val(cmp.value);
+                    }
+                    if (cont == 1) {
+                        $('#componentes').append("<br>");
+                        $('#label2').text(cmp.label);
+                        $('#cmp2').attr('name', cmp.id);
+                        $('#cmp2').val(cmp.value);
+                    }
+                    $('#componentes').append(JSON.stringify(cmp));
+                    cont += 1;
                 })
             }
 
@@ -98,6 +108,10 @@
                     {
                         id:     $('#app-widget-input').attr('name'),
                         value:  $('#app-widget-input').val()
+                    },
+                    {
+                        id:     $('#cmp2').attr('name'),
+                        value:  $('#cmp2).val()
                     },
                 ];
             }
