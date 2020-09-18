@@ -122,6 +122,8 @@
                 // Internally set value (and get component name for use in our modal)
                 let componentName = setValue(response.components);
 
+            }).catch((error) => {
+                window.CanvasSDK.handleError(error);
             });
 
         </script>
