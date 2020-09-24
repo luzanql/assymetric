@@ -1,30 +1,33 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-		<meta charset="utf-8"> 
-		<title>iFrame message passing test</title> 
-		<meta name="description" content="iFrame message passing test">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Widget</title>
+        <meta name="description" content="iFrame message passing test">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://dvarcarcel.dev.sproutloud.com/includes/macaw-styles.css" >
         <script src="https://aquiceno.dev.sproutloud.com/includes/CanvasSDK.js"></script>
-	</head>
-	<body data-gr-c-s-loaded="true" class="m-external-widget">
+    </head>
+    <body data-gr-c-s-loaded="true" class="m-external-widget">
         <div>
-            <label id="app-widget-label"></label><br>
-            <select id="app-widget-input" class="m-select">
-                <option value="">Select a url</option>
-                <option value="site">https://scotch.com/site</option>
-                <option value="tyc">https://scotch.com/tyc</option>
-                <option value="faq">https://scotch.com/faq</option>
-            </select>
-            <label id="label2">Text</label><br>
-            <input id="cmp2" class="m-sdk-input" />
-            <p style="word-break: break-all;" id="componentes"></p>
+            <div class="m-sdk-select">
+                <label id="app-widget-label"></label><br>
+                <select id="app-widget-input" class="m-select">
+                    <option value="">Select a url</option>
+                    <option value="site">https://scotch.com/site</option>
+                    <option value="tyc">https://scotch.com/tyc</option>
+                    <option value="faq">https://scotch.com/faq</option>
+                </select>
+            </div>
+            <div class="m-sdk-input">
+                <label id="label2">Text</label>
+                <input id="cmp2"  />
+                <p style="word-break: break-all;" id="componentes"></p>
+            </div>
         </div>
-        <div>  <p style="font-size:xx-small; word-break: break-all;" id="componentes"></p></div>
 
         <script>
 
@@ -52,10 +55,11 @@
                 });
             }
 
+
             /**
              * function to populate the HTML elements of this widget. This
-             * function was designed to consume the "components" object 
-             * returned by the SDK's "getComponents()" function. 
+             * function was designed to consume the "components" object
+             * returned by the SDK's "getComponents()" function.
              *
              * @param {Map} components
              *    A map object filled with all the components assigned
@@ -135,22 +139,15 @@
             })
             // 3. use the response from the previous call to get the components in order to populate the UI
             .then(function(response){
-
                 // Internally set value (and get component name for use in our modal)
                 let componentName = setValue(response.components);
-
             }).catch((error) => {
                 window.CanvasSDK.handleError(error);
             });
 
         </script>
         {% load static %}
-        <script>
-            $('select').parent('div').addClass("m-sdk-select");
-            $('textarea').parent('div').addClass("m-sdk-textarea");
-            $('input[type="text"]').parent('div').addClass("m-sdk-input");
-            $('input[type="checkbox"]').parent('div').addClass("m-sdk-checkbox");
-        </script>
+
         <script type="text/javascript" src="{% static 'js/iframeResizer.contentWindow.min.js' %}"></script>
     </body>
 </html>
