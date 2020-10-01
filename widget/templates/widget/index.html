@@ -9,7 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://dvarcarcel.dev.sproutloud.com/includes/macaw-styles.css" >
-        <script src="https://aquiceno.dev.sproutloud.com/includes/CanvasSDK.js"></script>
+        <script src="https://dev-sl-assets.sproutloud.com/arce/sdk.js"></script>
     </head>
     <body data-gr-c-s-loaded="true" class="m-external-widget">
         <div>
@@ -26,7 +26,7 @@
         </div>
 
         <script>
-
+            const sdk = new Sdk.CanvasSDK();
             /**
              * function which contacts widget's server in order to decrypt
              * a string provided by the SDK. The returned value is simply
@@ -115,7 +115,7 @@
             console.log("Let's initialize the canvas");
             // interaction with the sdk
             // 1. initialize SDK
-            window.CanvasSDK.initialize({
+            sdk.initialize({
 
                 'nonce': function(e) {
                     return getNonce(e);
@@ -127,14 +127,14 @@
             // 2. get the components (and their persisted values) associated with this widget
             .then(function() {
                 console.log('Hanshake done - Now get the components');
-                return window.CanvasSDK.getComponents();
+                return sdk.getComponents();
             })
             // 3. use the response from the previous call to get the components in order to populate the UI
             .then(function(response){
                 // Internally set value (and get component name for use in our modal)
                 let componentName = setValue(response.components);
             }).catch((error) => {
-                window.CanvasSDK.handleError(error);
+                sdk.handleError(error);
             });
 
         </script>
