@@ -77,7 +77,7 @@
                 components.forEach(cmp => {
                     if (cont == 0) {
                         $('#app-widget-label').text(cmp.label);
-                        $('#app-widget-input').attr('name', cmp.id);
+                        $('#app-widget-input').attr('name', cmp.name);
                         $('#app-widget-input').val(cmp.value);
                     }
                     if (cont == 1) {
@@ -109,7 +109,7 @@
                 // return an array containint just one object
                 return [
                     {
-                        id:     $('#app-widget-input').attr('name'),
+                        name:     $('#app-widget-input').attr('name'),
                         value:  $('#app-widget-input').val()
                     }
                 ];
