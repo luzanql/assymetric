@@ -119,6 +119,11 @@
                 ];
             }
 
+            // get validation errors from the widget itself
+            function getValidationError(values) {
+                console.log("get validation errores",  values);
+            }
+
             console.log("Let's initialize the canvas");
             // interaction with the sdk
             // 1. initialize SDK
@@ -129,19 +134,21 @@
                 },
                 'component-values': function() {
                     return getValue();
+                },
+                'COMPONENT_VALUES_SMART_CANVAS': function(values) {
+                    return setValidationError(values);
                 }
             })
             // 2. get the components (and their persisted values) associated with this widget
             .then(function() {
-                console.log('Hanshake done - Now get the components');
                 return sdk.getComponents();
             })
             // 3. use the response from the previous call to get the components in order to populate the UI
             .then(function(response){
                 // Internally set value (and get component name for use in our modal)
                 let componentName = setValue(response.components);
-            }).catch((error) => {
-                sdk.handleError(error);
+            }).catch((reason) => {
+                sdk.handleError(reason);
             });
 
         </script>
